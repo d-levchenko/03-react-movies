@@ -1,14 +1,17 @@
+import { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import './App.module.css';
 
 export default function App() {
-  //todo
-  //   const handleSubmit = (formData: FormData) => {
-  //     const searchQuery = formData.get('query') as string;
-  //   };
+  const [query, setQuery] = useState('');
+
+  const handleSearch = (newQuery: string) => {
+    setQuery(newQuery);
+  };
+
   return (
     <>
-      <SearchBar />
+      <SearchBar onSubmit={handleSearch} />
     </>
   );
 }
