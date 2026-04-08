@@ -1,6 +1,6 @@
 import css from './MovieModal.module.css';
 
-export default function MovieModal() {
+const MovieModal = () => {
   return (
     <div className={css.backdrop} role="dialog" aria-modal="true">
       <div className={css.modal}>
@@ -25,4 +25,6 @@ export default function MovieModal() {
       </div>
     </div>
   );
-}
+};
+
+export default MovieModal;
