@@ -6,6 +6,8 @@ import MovieGrid from '../MovieGrid/MovieGrid';
 import type { Movie } from '../../types/movie';
 import fetchMovies from '../../services/movieService';
 import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import MovieModal from '../MovieModal/MovieModal';
 
 export default function App() {
   const [error, setError] = useState(false);
@@ -37,11 +39,19 @@ export default function App() {
     setSelectedMovies(movie);
   };
 
+  const handleModalClose = () => {
+    setSelectedMovies(null);
+  };
+
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
       {loading && <Loader />}
-      <MovieGrid movies={movies} onSelect={handleMovieSelect} />
+      {error && !loading && <ErrorMessage />}
+      {!loading && !error && movies.length > 0 && (
+        <MovieGrid movies={movies} onSelect={handleMovieSelect} />
+      )}
+      <MovieModal movie={selectedMovies} onClose={handleModalClose} />
     </>
   );
 }

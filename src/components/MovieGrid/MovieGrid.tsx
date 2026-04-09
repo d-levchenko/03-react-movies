@@ -6,7 +6,7 @@ interface MovieGridProps {
   onSelect: (movie: Movie) => void;
 }
 
-export default function MovieGrid({ movies, onSelect }: MovieGridProps) {
+const MovieGrid = ({ movies, onSelect }: MovieGridProps) => {
   return (
     <ul className={css.grid}>
       {movies.map(elem => (
@@ -24,4 +24,6 @@ export default function MovieGrid({ movies, onSelect }: MovieGridProps) {
       ))}
     </ul>
   );
-}
+};
+
+export default MovieGrid;
